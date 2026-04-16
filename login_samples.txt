@@ -1,0 +1,16 @@
+Daftar Akun Sample - SIAKAD AIPI Makassar
+========================================
+
+1. Role: Mahasiswa
+   NIM      : 2021004592
+   Nama     : Andi Saputra
+   Password : [Apa saja / sembarang]
+
+2. Role: Dosen
+   NIDN     : 198504122010121003
+   Nama     : Dr. Ahmad Rizal
+   Password : [Apa saja / sembarang]
+
+Catatan:
+Halaman login saat ini masih bersifat simulasi (mockup).
+Data di atas disesuaikan dengan isi file js/data.js agar profil muncul dengan benar.
