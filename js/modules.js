@@ -56,10 +56,10 @@ const DashboardModules = {
                     <h3 class="text-xl font-bold text-white flex items-center">
                         <i data-lucide="clock" class="w-5 h-5 mr-2 text-indigo-400"></i> Jadwal Hari Ini
                     </h3>
-                    <button class="text-sm text-indigo-400 hover:text-white transition-colors">Lihat Semua</button>
+                    <button @click="currentModule = 'jadwal'" class="text-sm text-indigo-400 hover:text-white transition-colors">Lihat Semua</button>
                 </div>
                 <div class="space-y-4">
-                    ${data.schedule.slice(0, 2).map(cls => `
+                    ${data.schedule.slice(0, 4).map(cls => `
                         <div class="glass p-5 rounded-3xl flex items-center justify-between group hover:border-indigo-500/50 transition-all cursor-pointer">
                             <div class="flex items-center space-x-5">
                                 <div class="w-14 h-14 rounded-2xl bg-${cls.color}-500/10 flex flex-col items-center justify-center text-center">
@@ -281,6 +281,60 @@ const DashboardModules = {
                          </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    `,
+    
+    // ---------------------------------------------------------
+    // JADWAL KULIAH
+    // ---------------------------------------------------------
+    jadwal: (data) => `
+        <div class="glass p-8 rounded-[2.5rem]">
+            <div class="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
+                <div>
+                    <h3 class="text-2xl font-black text-white uppercase tracking-tight">Jadwal Kuliah</h3>
+                    <p class="text-slate-400 text-sm">Tahun Akademik 2025/2026 - Semester Genap</p>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <button class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-slate-300 text-sm font-bold hover:bg-white/10 transition-all">Minggu Ini</button>
+                    <button class="px-4 py-2 rounded-xl bg-indigo-500 text-white text-sm font-bold flex items-center shadow-neon">
+                        <i data-lucide="download" class="w-4 h-4 mr-2"></i> Cetak Jadwal
+                    </button>
+                </div>
+            </div>
+
+            <div class="space-y-8">
+                ${['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat'].map(day => {
+                    const lessons = (data.schedule || data.classes).filter(item => item.day === day);
+                    if (lessons.length === 0) return '';
+                    
+                    return `
+                        <div>
+                            <div class="flex items-center space-x-3 mb-4">
+                                <span class="px-4 py-1 rounded-full bg-indigo-500/20 text-indigo-400 text-xs font-black uppercase tracking-widest">${day}</span>
+                                <div class="h-px flex-1 bg-white/5"></div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                ${lessons.map(lesson => `
+                                    <div class="glass p-5 rounded-3xl border border-white/5 hover:border-indigo-500/30 transition-all group">
+                                        <div class="flex items-start justify-between mb-3">
+                                            <div class="p-2 rounded-xl bg-indigo-500/10 text-indigo-400">
+                                                <i data-lucide="book-open" class="w-5 h-5"></i>
+                                            </div>
+                                            <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">${lesson.time}</span>
+                                        </div>
+                                        <h4 class="text-white font-bold group-hover:text-indigo-400 transition-colors mb-1 line-clamp-1">${lesson.subject || lesson.name}</h4>
+                                        <div class="flex items-center text-xs text-slate-500 space-x-3">
+                                            <span class="flex items-center"><i data-lucide="map-pin" class="w-3 h-3 mr-1"></i> ${lesson.room || 'Online'}</span>
+                                            ${lesson.lecturer ? `<span class="flex items-center"><i data-lucide="user" class="w-3 h-3 mr-1"></i> ${lesson.lecturer}</span>` : ''}
+                                            ${lesson.students ? `<span class="flex items-center"><i data-lucide="users" class="w-3 h-3 mr-1"></i> ${lesson.students} Siswa</span>` : ''}
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `;
+                }).join('')}
             </div>
         </div>
     `,
