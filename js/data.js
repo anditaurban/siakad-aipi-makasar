@@ -38,5 +38,25 @@ const AppData = {
             { task: 'Upload Nilai Akhir Basis Data', date: '20 April 2026', status: 'Urgent' },
             { task: 'Verifikasi KRS Mahasiswa Bimbingan', date: '25 April 2026', status: 'Normal' },
         ]
-    }
+    },
+    admin: {
+        name: "Admin Superuser",
+        id: "ADMIN-001",
+        role: "Super Admin",
+        avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Admin",
+        stats: {
+            totalStudents: 1240,
+            totalLecturers: 86,
+            totalCourses: 42,
+            activeProdi: 5
+        }
+    },
+    // Master data for courses
+    courses: [
+        { code: 'INF101', name: 'Alpro I', sks: 3, semester: 1, prodi: 'TI' },
+        { code: 'INF102', name: 'Alpro II', sks: 3, semester: 2, prodi: 'TI' },
+        { code: 'INF201', name: 'Basis Data', sks: 3, semester: 3, prodi: 'TI' },
+        { code: 'INF301', name: 'PBO', sks: 3, semester: 4, prodi: 'TI' },
+        { code: 'INF402', name: 'Pemrograman Web II', sks: 3, semester: 6, prodi: 'TI' },
+    ]
 };

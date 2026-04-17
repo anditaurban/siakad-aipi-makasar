@@ -1,0 +1,122 @@
+{
+  "info": {
+    "name": "SIAKAD AIPI API - Collection",
+    "_postman_id": "siakad-aipi-api-collection",
+    "description": "Postman collection to test SIAKAD AIPI API (Express)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/health",
+          "host": ["{{base_url}}"],
+          "path": ["health"]
+        }
+      }
+    },
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"user1\",\n  \"password\": \"password123\",\n  \"role\": \"mahasiswa\"\n}"
+            },
+            "url": { "raw": "{{base_url}}/api/auth/register", "host": ["{{base_url}}"], "path": ["api","auth","register"] }
+          }
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"username\": \"2021004592\",\n  \"password\": \"password123\"\n}" },
+            "url": { "raw": "{{base_url}}/api/auth/login", "host": ["{{base_url}}"], "path": ["api","auth","login"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Prodi",
+      "item": [
+        { "name": "List Prodi", "request": { "method": "GET", "url": { "raw": "{{base_url}}/api/prodi", "host": ["{{base_url}}"], "path": ["api","prodi"] } } },
+        { "name": "Get Prodi by ID", "request": { "method": "GET", "url": { "raw": "{{base_url}}/api/prodi/1", "host": ["{{base_url}}"], "path": ["api","prodi","1"] } } },
+        { "name": "Create Prodi", "request": { "method": "POST", "header": [{"key":"Content-Type","value":"application/json"}], "body": { "mode":"raw","raw":"{\n  \"nama_prodi\": \"Teknik Elektro\"\n}" }, "url": { "raw":"{{base_url}}/api/prodi","host":["{{base_url}}"],"path":["api","prodi"] } } },
+        { "name": "Update Prodi", "request": { "method": "PUT", "header":[{"key":"Content-Type","value":"application/json"}], "body": { "mode":"raw","raw":"{\n  \"nama_prodi\": \"Teknik Elektro (Updated)\"\n}" }, "url": { "raw":"{{base_url}}/api/prodi/1","host":["{{base_url}}"],"path":["api","prodi","1"] } } },
+        { "name": "Delete Prodi", "request": { "method": "DELETE", "url": { "raw": "{{base_url}}/api/prodi/1", "host": ["{{base_url}}"], "path": ["api","prodi","1"] } } }
+      ]
+    },
+    {
+      "name": "Mahasiswa",
+      "item": [
+        { "name": "List Mahasiswa", "request": { "method": "GET", "url": { "raw": "{{base_url}}/api/mahasiswa", "host": ["{{base_url}}"], "path": ["api","mahasiswa"] } } },
+        { "name": "Get Mahasiswa", "request": { "method": "GET", "url": { "raw": "{{base_url}}/api/mahasiswa/2021004592", "host": ["{{base_url}}"], "path": ["api","mahasiswa","2021004592"] } } },
+        { "name": "Create Mahasiswa", "request": { "method": "POST", "header": [{"key":"Content-Type","value":"application/json"}], "body": { "mode":"raw","raw":"{\n  \"nim\": \"2021999999\",\n  \"nama\": \"Budi\",\n  \"prodi_id\": 1\n}" }, "url": { "raw":"{{base_url}}/api/mahasiswa","host":["{{base_url}}"],"path":["api","mahasiswa"] } } },
+        { "name": "Update Mahasiswa", "request": { "method": "PUT", "header":[{"key":"Content-Type","value":"application/json"}], "body": { "mode":"raw","raw":"{\n  \"nama\": \"Budi Updated\",\n  \"semester_aktif\": 3\n}" }, "url": { "raw":"{{base_url}}/api/mahasiswa/2021999999","host":["{{base_url}}"],"path":["api","mahasiswa","2021999999"] } } },
+        { "name": "Delete Mahasiswa", "request": { "method": "DELETE", "url": { "raw": "{{base_url}}/api/mahasiswa/2021999999", "host": ["{{base_url}}"], "path": ["api","mahasiswa","2021999999"] } } }
+      ]
+    },
+    {
+      "name": "Dosen",
+      "item": [
+        { "name": "List Dosen", "request": { "method": "GET", "url": { "raw": "{{base_url}}/api/dosen", "host": ["{{base_url}}"], "path": ["api","dosen"] } } },
+        { "name": "Get Dosen", "request": { "method": "GET", "url": { "raw": "{{base_url}}/api/dosen/198504122010121003", "host": ["{{base_url}}"], "path": ["api","dosen","198504122010121003"] } } },
+        { "name": "Create Dosen", "request": { "method": "POST", "header":[{"key":"Content-Type","value":"application/json"}], "body": { "mode":"raw","raw":"{\n  \"nidn\": \"1234567890\",\n  \"nama\": \"Dr. New\"\n}" }, "url": { "raw":"{{base_url}}/api/dosen","host":["{{base_url}}"],"path":["api","dosen"] } } },
+        { "name": "Update Dosen", "request": { "method": "PUT", "header":[{"key":"Content-Type","value":"application/json"}], "body": { "mode":"raw","raw":"{\n  \"nama\": \"Dr. New Updated\"\n}" }, "url": { "raw":"{{base_url}}/api/dosen/1234567890","host":["{{base_url}}"],"path":["api","dosen","1234567890"] } } },
+        { "name": "Delete Dosen", "request": { "method": "DELETE", "url": { "raw": "{{base_url}}/api/dosen/1234567890", "host": ["{{base_url}}"], "path": ["api","dosen","1234567890"] } } }
+      ]
+    },
+    {
+      "name": "Mata Kuliah",
+      "item": [
+        { "name": "List MK", "request": { "method": "GET", "url": { "raw": "{{base_url}}/api/mata-kuliah", "host": ["{{base_url}}"], "path": ["api","mata-kuliah"] } } },
+        { "name": "Get MK", "request": { "method": "GET", "url": { "raw": "{{base_url}}/api/mata-kuliah/MK-001", "host": ["{{base_url}}"], "path": ["api","mata-kuliah","MK-001"] } } },
+        { "name": "Create MK", "request": { "method": "POST", "header":[{"key":"Content-Type","value":"application/json"}], "body": { "mode":"raw","raw":"{\n  \"kode_mk\": \"MK-999\",\n  \"nama_mk\": \"Kuliah Baru\",\n  \"sks\": 3,\n  \"semester\": 2,\n  \"prodi_id\": 1\n}" }, "url": { "raw":"{{base_url}}/api/mata-kuliah","host":["{{base_url}}"],"path":["api","mata-kuliah"] } } },
+        { "name": "Update MK", "request": { "method": "PUT", "header":[{"key":"Content-Type","value":"application/json"}], "body": { "mode":"raw","raw":"{\n  \"nama_mk\": \"Kuliah Baru Updated\"\n}" }, "url": { "raw":"{{base_url}}/api/mata-kuliah/MK-999","host":["{{base_url}}"],"path":["api","mata-kuliah","MK-999"] } } },
+        { "name": "Delete MK", "request": { "method": "DELETE", "url": { "raw": "{{base_url}}/api/mata-kuliah/MK-999", "host": ["{{base_url}}"], "path": ["api","mata-kuliah","MK-999"] } } }
+      ]
+    },
+    {
+      "name": "Jadwal",
+      "item": [
+        { "name": "List Jadwal", "request": { "method": "GET", "url": { "raw": "{{base_url}}/api/jadwal", "host": ["{{base_url}}"], "path": ["api","jadwal"] } } },
+        { "name": "Get Jadwal", "request": { "method": "GET", "url": { "raw": "{{base_url}}/api/jadwal/1", "host": ["{{base_url}}"], "path": ["api","jadwal","1"] } } },
+        { "name": "Create Jadwal", "request": { "method": "POST", "header":[{"key":"Content-Type","value":"application/json"}], "body": { "mode":"raw","raw":"{\n  \"kode_mk\": \"MK-001\",\n  \"hari\": \"Senin\",\n  \"jam\": \"08:00 - 10:30\"\n}" }, "url": { "raw":"{{base_url}}/api/jadwal","host":["{{base_url}}"],"path":["api","jadwal"] } } },
+        { "name": "Update Jadwal", "request": { "method": "PUT", "header":[{"key":"Content-Type","value":"application/json"}], "body": { "mode":"raw","raw":"{\n  \"hari\": \"Selasa\"\n}" }, "url": { "raw":"{{base_url}}/api/jadwal/1","host":["{{base_url}}"],"path":["api","jadwal","1"] } } },
+        { "name": "Delete Jadwal", "request": { "method": "DELETE", "url": { "raw": "{{base_url}}/api/jadwal/1", "host": ["{{base_url}}"], "path": ["api","jadwal","1"] } } }
+      ]
+    },
+    {
+      "name": "KHS",
+      "item": [
+        { "name": "List KHS", "request": { "method": "GET", "url": { "raw": "{{base_url}}/api/khs", "host": ["{{base_url}}"], "path": ["api","khs"] } } },
+        { "name": "Get KHS", "request": { "method": "GET", "url": { "raw": "{{base_url}}/api/khs/1", "host": ["{{base_url}}"], "path": ["api","khs","1"] } } },
+        { "name": "Create KHS", "request": { "method": "POST", "header":[{"key":"Content-Type","value":"application/json"}], "body": { "mode":"raw","raw":"{\n  \"nim\": \"2021004592\",\n  \"kode_mk\": \"MK-001\",\n  \"nilai_huruf\": \"A\",\n  \"nilai_angka\": 4.00\n}" }, "url": { "raw":"{{base_url}}/api/khs","host":["{{base_url}}"],"path":["api","khs"] } } },
+        { "name": "Update KHS", "request": { "method": "PUT", "header":[{"key":"Content-Type","value":"application/json"}], "body": { "mode":"raw","raw":"{\n  \"nilai_huruf\": \"A-\",\n  \"nilai_angka\": 3.75\n}" }, "url": { "raw":"{{base_url}}/api/khs/1","host":["{{base_url}}"],"path":["api","khs","1"] } } },
+        { "name": "Delete KHS", "request": { "method": "DELETE", "url": { "raw": "{{base_url}}/api/khs/1", "host": ["{{base_url}}"], "path": ["api","khs","1"] } } }
+      ]
+    },
+    {
+      "name": "KRS",
+      "item": [
+        { "name": "List KRS", "request": { "method": "GET", "url": { "raw": "{{base_url}}/api/krs", "host": ["{{base_url}}"], "path": ["api","krs"] } } },
+        { "name": "Get KRS", "request": { "method": "GET", "url": { "raw": "{{base_url}}/api/krs/1", "host": ["{{base_url}}"], "path": ["api","krs","1"] } } },
+        { "name": "Create KRS", "request": { "method": "POST", "header":[{"key":"Content-Type","value":"application/json"}], "body": { "mode":"raw","raw":"{\n  \"nim\": \"2021004592\",\n  \"kode_mk\": \"MK-001\",\n  \"tahun_akademik\": \"2023/2024\"\n}" }, "url": { "raw":"{{base_url}}/api/krs","host":["{{base_url}}"],"path":["api","krs"] } } },
+        { "name": "Update KRS", "request": { "method": "PUT", "header":[{"key":"Content-Type","value":"application/json"}], "body": { "mode":"raw","raw":"{\n  \"status\": \"approved\"\n}" }, "url": { "raw":"{{base_url}}/api/krs/1","host":["{{base_url}}"],"path":["api","krs","1"] } } },
+        { "name": "Delete KRS", "request": { "method": "DELETE", "url": { "raw": "{{base_url}}/api/krs/1", "host": ["{{base_url}}"], "path": ["api","krs","1"] } } }
+      ]
+    }
+  ],
+  "variable": [
+    { "key": "base_url", "value": "http://localhost:3000" },
+    { "key": "jwt_token", "value": "" }
+  ]
+}

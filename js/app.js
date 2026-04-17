@@ -29,13 +29,44 @@ document.addEventListener('alpine:init', () => {
         },
 
         updateMenuItems(role) {
-            if (role === 'dosen') {
-                this.menuItems[1] = { id: 'krs', name: 'Validasi KRS', icon: 'check-circle' };
-                this.menuItems[2] = { id: 'khs', name: 'Input Nilai', icon: 'edit-3' };
+            if (role === 'admin') {
+                this.menuItems = [
+                    { id: 'dashboard', name: 'Dashboard', icon: 'layout-grid' },
+                    { id: 'manage_students', name: 'Data Mahasiswa', icon: 'users' },
+                    { id: 'manage_lecturers', name: 'Data Dosen', icon: 'user-check' },
+                    { id: 'manage_courses', name: 'Mata Kuliah', icon: 'book-open' },
+                    { id: 'profil', name: 'Profil', icon: 'user' },
+                ];
+            } else if (role === 'dosen') {
+                this.menuItems = [
+                    { id: 'dashboard', name: 'Dashboard', icon: 'layout-grid' },
+                    { id: 'krs', name: 'Validasi KRS', icon: 'check-circle' },
+                    { id: 'khs', name: 'Input Nilai', icon: 'edit-3' },
+                    { id: 'jadwal', name: 'Jadwal Kuliah', icon: 'calendar' },
+                    { id: 'profil', name: 'Profil Saya', icon: 'user' },
+                ];
             } else {
-                this.menuItems[1] = { id: 'krs', name: 'KRS Online', icon: 'clipboard-list' };
-                this.menuItems[2] = { id: 'khs', name: 'Nilai KHS', icon: 'file-text' };
+                this.menuItems = [
+                    { id: 'dashboard', name: 'Dashboard', icon: 'layout-grid' },
+                    { id: 'krs', name: 'KRS Online', icon: 'clipboard-list' },
+                    { id: 'khs', name: 'Nilai KHS', icon: 'file-text' },
+                    { id: 'jadwal', name: 'Jadwal Kuliah', icon: 'calendar' },
+                    { id: 'profil', name: 'Profil Saya', icon: 'user' },
+                ];
             }
+        },
+
+        // Admin Actions (Mock)
+        addCourse(course) {
+            this.userData.courses.unshift(course);
+            this.userData.admin.stats.totalCourses++;
+            this.refreshContent();
+        },
+
+        deleteCourse(code) {
+            this.userData.courses = this.userData.courses.filter(c => c.code !== code);
+            this.userData.admin.stats.totalCourses--;
+            this.refreshContent();
         },
 
         refreshContent() {

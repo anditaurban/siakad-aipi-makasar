@@ -129,20 +129,27 @@
                 </div>
 
                 <!-- Role Selection -->
-                <div class="grid grid-cols-2 gap-3 pt-2">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
                     <button type="button" 
                             @click="role = 'mahasiswa'"
                             :class="role === 'mahasiswa' ? 'bg-indigo-500/20 border-indigo-500/50 text-indigo-400 shadow-neon' : 'bg-white/5 border-white/10 text-slate-500'"
-                            class="py-3 px-4 rounded-2xl border font-bold text-xs transition-all duration-300 flex items-center justify-center gap-2">
+                            class="py-3 px-2 rounded-2xl border font-bold text-[10px] transition-all duration-300 flex flex-col items-center justify-center gap-1">
                         <i data-lucide="graduation-cap" class="w-4 h-4"></i>
                         Mahasiswa
                     </button>
                     <button type="button" 
                             @click="role = 'dosen'"
                             :class="role === 'dosen' ? 'bg-pink-500/20 border-pink-500/50 text-pink-400 shadow-neon-pink' : 'bg-white/5 border-white/10 text-slate-500'"
-                            class="py-3 px-4 rounded-2xl border font-bold text-xs transition-all duration-300 flex items-center justify-center gap-2">
+                            class="py-3 px-2 rounded-2xl border font-bold text-[10px] transition-all duration-300 flex flex-col items-center justify-center gap-1">
                         <i data-lucide="user-check" class="w-4 h-4"></i>
                         Dosen
+                    </button>
+                    <button type="button" 
+                            @click="role = 'admin'"
+                            :class="role === 'admin' ? 'bg-emerald-500/20 border-emerald-500/50 text-emerald-400 shadow-neon' : 'bg-white/5 border-white/10 text-slate-500'"
+                            class="py-3 px-2 rounded-2xl border font-bold text-[10px] transition-all duration-300 flex flex-col items-center justify-center gap-1">
+                        <i data-lucide="shield-check" class="w-4 h-4"></i>
+                        Admin
                     </button>
                 </div>
 
